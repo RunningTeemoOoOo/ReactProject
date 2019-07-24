@@ -7,15 +7,19 @@ class GoodHouse extends Component {
     list: []
   }
   componentDidMount() {
-    axios('/index.php/wechatapp/SaleHouse/getHotHouse?src=webapp').then(res=> {
-      console.log(res)
+    axios({
+      url: '/index.php/wechatapp/SaleHouse/getHotHouse?src=webapp'
+    }).then(res=> {
+      this.setState({
+        list: res.data.data[0].houses
+      })
     })
   }
   render() {
     return (
       <div>
         <div>GoodHouse</div>
-        <HouseList></HouseList>
+        <HouseList info={this.state.list}></HouseList>
       </div>
     )
   }
