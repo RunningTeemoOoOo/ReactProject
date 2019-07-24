@@ -1,8 +1,8 @@
 const proxy = require('http-proxy-middleware')
 
 module.exports = function(app) {
-  app.use(proxy('/store', {
-    target: 'https://music.163.com',
+  app.use(proxy('/index.php', {
+    target: 'https://m.uhouzz.com',
     changeOrigin: true
   }))
 }
