@@ -20,7 +20,7 @@ const router = (
     <App>
       <Switch>
         <Route path='/index' component={Index} exact></Route>
-        <Route path='/detail/:id' component={Detail} exact></Route>
+        <Route path='/detail/' component={Detail} exact></Route>
         <Route path='/searchcity' component={SearchCity} exact></Route>
         <Route path='/search/:citynm' component={Search} exact></Route>
         <Route path='/searchall' component={SearchAll} exact></Route>
