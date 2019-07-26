@@ -1,10 +1,10 @@
 import React, {Component} from 'react'
-import css from './index.module.scss'
+// import css from './index.module.scss'
 
 class HouseList extends Component {
   render() {
     return (
-      <div className={css.houselist}>HouseList</div>
+      <div>HouseList</div>
     )
   }
 }

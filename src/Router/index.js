@@ -11,9 +11,9 @@ import HelpMe from './../Views/HelpMe'
 import Search from './../Views/Search'
 import SearchAll from './../Views/SearchAll'
 import SearchCity from './../Views/SearchCity'
-
 import {Provider} from 'react-redux'
 import store from './../Redux'
+import Information from './../Views/Information'
 const router = (
   <Provider store={store}>
   <Router>
@@ -28,6 +28,7 @@ const router = (
         <Route path='/helpme' component={HelpMe} exact></Route>
         <Route path='/calculator' component={Calculator} exact></Route>
         <Route path='/guide/:cityid' component={Guide} exact></Route>
+        <Route path='/information/:id' component={Information} exact></Route>
         <Redirect from='*' to="/index" />
       </Switch>
     </App>
