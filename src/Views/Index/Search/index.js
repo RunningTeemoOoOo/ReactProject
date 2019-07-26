@@ -22,7 +22,7 @@ class Search extends Component {
     )
   }
   toSearchCity() {
-    this.props.history.push('/SearchCity')
+    this.props.history.push('/searchcity')
   }
 }
 

@@ -15,7 +15,7 @@ class Houses extends Component {
               !this.props.list?null:
               this.props.list.list.map(item=> {
                 return (
-                  <div className={css.slide + " swiper-slide"} key={item.id} onClick={()=>this.toSearch(item.unique_name)}>
+                  <div className={css.slide + " swiper-slide"} key={item.id} onClick={()=>this.toSearch(item.englishcountry, item.unique_name)}>
                     <img src={item.img_url} alt={item.chinesecountry} />
                     <div className={css.cn}>{item.chinesecountry}</div>
                     <div className={css.en}>{item.englishcountry}</div>
@@ -40,8 +40,8 @@ class Houses extends Component {
       swiper.allowClick = true
     }
   }
-  toSearch(city) {
-    this.props.history.push(`/search/${city}`)
+  toSearch(country, city) {
+    this.props.history.push(`/search/${country}&${city}`)
   }
 }
 

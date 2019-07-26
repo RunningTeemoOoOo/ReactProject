@@ -11,7 +11,7 @@ class HotCity extends Component {
           this.props.list.list.map((item, index)=> {
             return (
               <div className={css.citys} key={item.rid} onClick={()=> 
-                this.toSearch(item.country_unique_name)
+                this.toSearch(item.country_unique_name, item.city_unique_name)
               }>
                 {item.chinesecity}
               </div>
@@ -21,8 +21,8 @@ class HotCity extends Component {
       </div>
     )
   }
-  toSearch(city) {
-    this.props.history.push(`/search/${city}`)
+  toSearch(unique, city) {
+    this.props.history.push(`/search/${city}&${unique}`)
   }
 }
 

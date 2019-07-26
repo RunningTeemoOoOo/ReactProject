@@ -29,7 +29,6 @@ class Index extends Component {
     axios({
       url: '/index.php/wechatapp/SaleHouse/getIndexInfo?src=webapp'
     }).then(res=> {
-      console.log(res.data.data)
       this.setState({
         dataList: res.data.data
       })

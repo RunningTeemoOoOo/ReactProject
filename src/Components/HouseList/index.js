@@ -11,7 +11,7 @@ class HouseList extends Component {
           null:
           this.props.info.map(item => {
             return (
-              <li key={item.id} onClick={()=> this.toDetail(item.id)}>
+              <li key={item.id || item.house_id} onClick={()=> this.toDetail(item.id || item.house_id)}>
                 <div className={css.img}>
                   <img src={item.thumburl} alt="" />
                   <div className={css.roi + ' clear'}>
@@ -21,16 +21,26 @@ class HouseList extends Component {
                 </div>
                 <div className={css.bottom}>
                   <div className={css.title + ' clear'}>
-                    <span className={css.titL + ''}>{item.chinesecity}</span>
+                    <span className={css.titL + ''}>{item.chinesecity || item.region.city_lang}</span>
                     <span className={css.titR + ''}>{item.title}</span>
                   </div>
-                  <div className={css.price}>{item.price_rmb_string}</div>
-                  <div className={css.rent}>{item.rent}</div>
+                  {
+                    item.price_rmb_string? 
+                    <div className={css.price}>{item.price_rmb_string}</div>:
+                    <div className={css.price} dangerouslySetInnerHTML={{ __html: item.cost.price_string}}></div>
+                  }
+                  <div className={css.rent}>{item.rent || item.desc_string}</div>
                   <div className={css.tag + ' clear'}>
                     {
+                      item.housetag ?
                       item.housetag.map(tagitem => {
                         return (
                           <div style={{background: tagitem.tag_color}} key={tagitem.tagname}>{tagitem.tagname}</div>
+                        )
+                      }):
+                      item.tags.map(tagitem => {
+                        return (
+                          <div style={{background: tagitem.color}} key={tagitem.tag_id}>{tagitem.name_lang}</div>
                         )
                       })
                     }
