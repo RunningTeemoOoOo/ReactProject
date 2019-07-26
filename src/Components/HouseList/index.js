@@ -21,8 +21,8 @@ class HouseList extends Component {
                 </div>
                 <div className={css.bottom}>
                   <div className={css.title + ' clear'}>
-                    <div className={css.titL + ' l'}>{item.chinesecity}</div>
-                    <div className={'l'}>{item.title}</div>
+                    <span className={css.titL + ''}>{item.chinesecity}</span>
+                    <span className={css.titR + ''}>{item.title}</span>
                   </div>
                   <div className={css.price}>{item.price_rmb_string}</div>
                   <div className={css.rent}>{item.rent}</div>
@@ -46,7 +46,6 @@ class HouseList extends Component {
 
   toDetail = (id)=> {
     this.props.history.push(`/detail/${id}`)
-    // console.log(this)
   }
 }
 
