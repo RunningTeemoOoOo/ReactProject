@@ -9,7 +9,7 @@ class Guide extends Component {
     }
   componentDidMount(){
     axios({
-      url:'/index.php/wechatapp/pcNews/getNewsList?src=webapp&type_id=37'
+      url:`/index.php/wechatapp/pcNews/getNewsList?src=webapp&type_id=${this.props.match.params.cityid}`
     }).then(res=>{
       this.setState({
         info:res.data.data.result.info.top,

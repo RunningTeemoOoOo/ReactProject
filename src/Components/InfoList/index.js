@@ -3,7 +3,6 @@ import css from './index.module.scss'
 import { withRouter } from 'react-router'
 class InfoList extends Component {
   render() {
-    console.log(this.props.location.pathname)
     return(
       <div className={css.news}>
         {
@@ -29,7 +28,6 @@ class InfoList extends Component {
     )
   }
   changePage=(id)=>{
-      console.log(this.props)
       this.props.history.push(`/information/${id}`)
     }
 }
