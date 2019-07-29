@@ -1,8 +1,9 @@
 import {createStore, combineReducers, applyMiddleware, compose} from 'redux'
-import navbarReducers from './Reducers/navbarReducer'
+import listReducer from './Reducers/listReducer'
 import thunkMiddleware from 'redux-thunk'
+
 const reducers = combineReducers({
-  isShow: navbarReducers
+  list: listReducer
 })
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
