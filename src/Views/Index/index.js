@@ -13,11 +13,15 @@ import NavMiddle from './NavMiddle'
 import SearchMiddle from './SwiperMiddle'
 import SwiperBig from './SwiperBig'
 
+import {getIndexListData} from './actionCreator'
+import {connect} from 'react-redux'
+
 class Index extends Component {
   state = {
     adList: [],
     dataList: []
   }
+  unsubscribe = null
   componentDidMount() {
     axios({
       url: '/index.php/wechatapp/SaleHouse/getAdsList?src=webapp'
@@ -26,13 +30,12 @@ class Index extends Component {
         adList: res.data.data
       })
     })
-    axios({
-      url: '/index.php/wechatapp/SaleHouse/getIndexInfo?src=webapp'
-    }).then(res=> {
-      this.setState({
-        dataList: res.data.data
-      })
-    })
+    if (this.props.indexList.length === 0) {
+      this.props.getIndexListData()
+    }
+  }
+  componentWillUnmount() {
+    this.unsubscribe && this.unsubscribe()
   }
   render() {
     return (
@@ -41,14 +44,23 @@ class Index extends Component {
         <SwiperAD list={this.state.adList} />
         <Search />
         <Navs />
-        <SwiperSmall list={this.state.dataList[1]} />
-        <HotCity list={this.state.dataList[2]} />
+        <SwiperSmall list={this.props.indexList[1]} />
+        <HotCity list={this.props.indexList[2]} />
         <NavMiddle />
-        <SearchMiddle list={this.state.dataList[3]} />
-        <SwiperBig list={this.state.dataList[4]} />
+        <SearchMiddle list={this.props.indexList[3]} />
+        <SwiperBig list={this.props.indexList[4]} />
       </div>
     )
   }
 }
 
-export default withRouter(Index)
+const mapStateToProps = (state)=> {
+  return {
+    indexList: state.indexList
+  }
+}
+const mapDispatchToProps = {
+  getIndexListData
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Index))
