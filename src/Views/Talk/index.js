@@ -3,8 +3,8 @@ import css from './index.module.scss'
 
 class Talk extends Component {
   state = {
-    talkList: [{value: '你知道吗，你成功了！', isMe: false}],
-    replyList: ['你知道吗，你成功了！', '你成功了！', '咱俩谁更鸭？', '是你吗铁锤？']
+    talkList: [{value: '本店所有商品都十块，挑啥都十块，买啥都十块，原价五百万八百万的都十块，十块钱你买不了吃亏，你买不了上当，真正的清仓，真正的甩货，全场都十块，走过路过千万不要错过！', isMe: false}],
+    replyList: ['你知道吗，你成功了！', '你成功了！', '你就要成功了！']
   }
 
   render() {
