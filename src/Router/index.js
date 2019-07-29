@@ -14,6 +14,7 @@ import SearchCity from './../Views/SearchCity'
 import {Provider} from 'react-redux'
 import store from './../Redux'
 import Information from './../Views/Information'
+import Talk from './../Views/Talk'
 const router = (
   <Provider store={store}>
   <Router>
@@ -29,6 +30,7 @@ const router = (
         <Route path='/calculator' component={Calculator} exact></Route>
         <Route path='/guide/:cityid' component={Guide} exact></Route>
         <Route path='/information/:id' component={Information} exact></Route>
+        <Route path='/talk' component={Talk} exact></Route>
         <Redirect from='*' to="/index" />
       </Switch>
     </App>
