@@ -6,7 +6,7 @@ import {Icon} from 'antd'
 class Search extends Component {
   render() {
     return (
-      <div className={css.search} onClick={()=> this.toSearchCity()}>
+      <div className={css.search} onClick={()=> this.toSearchCity()} style={{zIndex: 99, position: 'relative'}}>
         <div className={css.s}>
           <Icon type="search" style={{
             color: '#999', 

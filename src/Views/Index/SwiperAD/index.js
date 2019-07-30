@@ -1,28 +1,53 @@
-import { Carousel } from 'antd-mobile';
+// import { Carousel } from 'antd-mobile';
+import Swiper from 'swiper'
+import 'swiper/dist/css/swiper.css'
 import React, { Component } from 'react'
 import { withRouter } from 'react-router';
 
 class SwiperAD extends Component {
   render() {
     return (
-      <div>
-        <Carousel autoplay={false} infinite>
+      <div className={'swiper-ad'}>
+        {/* <Carousel autoplay={true} infinite onLoad={()=> {window.dispatchEvent(new Event('resize'))}}>
           {
             this.props.list.map(item=> {
               return (
                 <div key={item.ad_id} onClick={()=> this.toDetail(item.adlink)} style={{height: '2.3rem'}}>
-                  <img src={item.adpicture} alt='item.title' style={{width: '100%'}} 
-                    onLoad={()=> {
-                    window.dispatchEvent(new Event('resize'))
-                    }}
-                  />
+                  <img src={item.adpicture} alt='item.title' style={{width: '100%'}}/>
                 </div>
               )
             })
           }
-        </Carousel>
+        </Carousel> */}
+        <div className={"swiper-wrapper"}>
+          {
+            this.props.list.map(item=> {
+              return (
+                <div className={'swiper-slide'} key={item.ad_id} onClick={()=> this.toDetail(item.adlink)} style={{height: '2.3rem'}}>
+                  <img src={item.adpicture} alt='item.title' style={{width: '100%'}}/>
+                </div>
+              )
+            })
+          }
+        </div>
       </div>
     )
+  }
+  componentDidUpdate() {
+    if (this.props.list) {
+      var swiper = new Swiper('.swiper-ad', {
+        slidesPerView: 1,
+        loop: true,
+        autoplay: {
+          delay: 2500,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          clickable: true,
+        },
+      });
+      swiper.allowClick = true
+    }
   }
   toDetail(idLink) {
     let adReg = /-new-(.*)\?/
