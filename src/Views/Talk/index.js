@@ -37,6 +37,13 @@ class Talk extends Component {
       </div>
     )
   }
+  componentDidMount() {
+    this.refs.myinput.addEventListener('keydown', (ev)=> {
+      if(ev.keyCode === 13 && this.value !== '') {
+        this.send()
+      }
+    })
+  }
 
   componentDidUpdate() {
     this.refs.main.scrollTop = this.refs.main.scrollHeight
