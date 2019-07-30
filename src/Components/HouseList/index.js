@@ -39,9 +39,9 @@ class HouseList extends Component {
                           <div style={{background: tagitem.tag_color}} key={tagitem.tagname}>{tagitem.tagname}</div>
                         )
                       }):
-                      item.tags.map(tagitem => {
+                      item.tags.map((tagitem, index) => {
                         return (
-                          <div style={{background: tagitem.color}} key={tagitem.tag_id}>{tagitem.name_lang}</div>
+                          <div style={{background: tagitem.color}} key={index}>{tagitem.name_lang}</div>
                         )
                       })
                     }

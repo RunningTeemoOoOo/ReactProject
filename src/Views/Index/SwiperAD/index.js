@@ -10,7 +10,7 @@ class SwiperAD extends Component {
           {
             this.props.list.map(item=> {
               return (
-                <div key={item.ad_id} onClick={()=> this.toDetail(item.ad_id)} style={{height: '2.3rem'}}>
+                <div key={item.ad_id} onClick={()=> this.toDetail(item.adlink)} style={{height: '2.3rem'}}>
                   <img src={item.adpicture} alt='item.title' style={{width: '100%'}} 
                     onLoad={()=> {
                     window.dispatchEvent(new Event('resize'))
@@ -24,8 +24,10 @@ class SwiperAD extends Component {
       </div>
     )
   }
-  toDetail(id) {
-    this.props.history.push(`/detail/${id}`)
+  toDetail(idLink) {
+    let adReg = /-new-(.*)\?/
+    adReg.test(idLink)
+    this.props.history.push(`/detail/${RegExp.$1}`)
   }
 }
 

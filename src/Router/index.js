@@ -24,7 +24,7 @@ const router = (
         <Route path='/detail/:id' component={Detail} exact></Route>
         <Route path='/searchcity' component={SearchCity} exact></Route>
         <Route path='/search/:citynm' component={Search} exact></Route>
-        <Route path='/searchall' component={SearchAll} exact></Route>
+        <Route path='/searchall/:cityinfo' component={SearchAll} exact></Route>
         <Route path='/goodhouse' component={GoodHouse} exact></Route>
         <Route path='/helpme' component={HelpMe} exact></Route>
         <Route path='/calculator' component={Calculator} exact></Route>
