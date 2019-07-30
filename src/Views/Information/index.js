@@ -96,7 +96,7 @@ class Information extends Component{
           <div className={css.message}>
             <p className={css.Relevant}>
               <span className={css.info}>{this.state.message.title}</span>
-              <span className={css.active}>更多 ></span>
+              <span className={css.active} onClick={()=> this.props.history.push('/More/Housenews')}>更多 ></span>
             </p>
             <InfoList info={this.state.info} />
           </div>

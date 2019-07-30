@@ -15,6 +15,7 @@ import {Provider} from 'react-redux'
 import store from './../Redux'
 import Information from './../Views/Information'
 import Talk from './../Views/Talk'
+import More from './../Views/More'
 const router = (
   <Provider store={store}>
   <Router>
@@ -31,6 +32,10 @@ const router = (
         <Route path='/guide/:cityid' component={Guide} exact></Route>
         <Route path='/information/:id' component={Information} exact></Route>
         <Route path='/talk' component={Talk} exact></Route>
+        <Route path="/More" render={()=>
+                        <More>
+                        </More>
+                    } />
         <Redirect from='*' to="/index" />
       </Switch>
     </App>
