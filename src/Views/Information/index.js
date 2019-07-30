@@ -45,7 +45,7 @@ class Information extends Component{
           <div className={css.head}>
             <i className={'iconfont icon-fanhui'} onClick={()=> this.goBack()}></i>
             <span>资讯详情</span>
-            <a href="https://m.uhouzz.com/">
+            <a href="/">
               <img src={"/img/head.png"} alt=''/>
             </a>
           </div>
