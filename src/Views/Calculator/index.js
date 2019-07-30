@@ -10,7 +10,7 @@ class Calculator extends Component {
         <header>
           <div className={css.hasT}>
             <div className={css.user}>
-              <i className={'iconfont icon-fanhui'}></i>
+              <i className={'iconfont icon-fanhui'} onClick={()=> this.props.history.goBack()}></i>
             </div>
             <div className={css.select}>
               <p>房贷计算器</p>
