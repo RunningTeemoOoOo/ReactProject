@@ -14,11 +14,10 @@ class Information extends Component{
         message:[]
     }
     componentDidMount(){
-      console.log(this.props.match.params.id)
         axios({
             url:`/index.php/wechatapp/News/getNewsText?arctive_id=${this.props.match.params.id}&src=webapp`
           }).then(res=>{
-            console.log(res.data.data)
+
             this.setState({
               list:res.data.data
             })
@@ -26,8 +25,6 @@ class Information extends Component{
           axios({
             url:`/index.php/wechatapp/News/getNewsData?arctive_id=${this.props.match.params.id}&src=webapp`
           }).then(res=>{
-            console.log(res.data.data.arctive)
-            console.log(res.data.data.relevantHouse.list.house_list)
             this.setState({
             title:res.data.data.arctive,
             keyword:res.data.data.arctive.keyword,
@@ -39,7 +36,7 @@ class Information extends Component{
     }
 
     render(){
-      console.log(this.props.match.url)
+
       var mytitle = this.state.title
         return <div key={this.props.match.url}>
           <div className={css.head}>
@@ -106,11 +103,11 @@ class Information extends Component{
         </div>
     }
     componentWillReceiveProps(nextProps) {
-      console.log(nextProps)
+
       axios({
             url:`/index.php/wechatapp/News/getNewsText?arctive_id=${nextProps.match.params.id}&src=webapp`
           }).then(res=>{
-            console.log(res.data.data)
+
             this.setState({
               list:res.data.data
             })
@@ -118,8 +115,7 @@ class Information extends Component{
           axios({
             url:`/index.php/wechatapp/News/getNewsData?arctive_id=${nextProps.match.params.id}&src=webapp`
           }).then(res=>{
-            console.log(res.data.data.arctive)
-            console.log(res.data.data.relevantHouse.list.house_list)
+
             this.setState({
             title:res.data.data.arctive,
             keyword:res.data.data.arctive.keyword,
@@ -133,7 +129,6 @@ class Information extends Component{
           }, 1000)
     }
     goBack() {
-      // console.log(this.props.history)
       this.props.history.goBack()
     }
 }

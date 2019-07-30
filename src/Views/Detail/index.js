@@ -19,13 +19,10 @@ class Detail extends Component {
          var headpiclist1 = [];
           axios.get(`https://m.uhouzz.com/index.php/wechatapp/SaleHouseDetail/getSaleHouseData?hid=742467&src=webapp`).then(res=>{
 
-          // console.log(res.data.data.pc_house_detail.data.headimglist.length)
           for(var i=0;i<res.data.data.pc_house_detail.data.headimglist.length;i++){
             headpiclist.push(res.data.data.pc_house_detail.data.headimglist[i])
-            // console.log(headpiclist[i].list.length)
              for(var j=0;j<headpiclist[i].list.length;j++){
               headpiclist1.push(headpiclist[i].list[j])
-              // console.log(headpiclist1)
              }
           }
           this.setState({
