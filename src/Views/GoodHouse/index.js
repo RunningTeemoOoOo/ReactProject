@@ -16,8 +16,11 @@ class GoodHouse extends Component {
   componentDidMount() {
     if(this.props.list.length === 0) {
       this.props.getListData()
+    } else {
+      window.addEventListener('scroll', this.MyScroll)
     }
-
+  }
+  componentDidUpdate() {
     window.addEventListener('scroll', this.MyScroll)
   }
   componentWillUnmount() {
