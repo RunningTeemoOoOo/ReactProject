@@ -23,15 +23,18 @@ class DetailSwiper extends Component {
                     {/* <p className={css.housetitl}> */}
                       {/* <span className={css.spanA}>{item.city_name}</span>
                       <span className={css.spanB}>{item.title}</span>
-                    </p> */}<div className={css.pagination +" swiper-pagination"}></div>
+                    // </p> */}
+                    {/* <div className={css.pagination +" swiper-pagination"}></div> */}
+                     <div className={css.pagination + ' swiper-pagination'}></div>
                     {/* <p className={css.houseprice} dangerouslySetInnerHTML={{ __html: item.price_string}}></p> */}
                   </div>
                   
                 )
               })
             }
+            
           </div>
-          
+         
          
         </div>
       </div>
@@ -41,11 +44,11 @@ class DetailSwiper extends Component {
     if (this.props.list) {
       var swiper = new Swiper('.swiper-info', {
         // slidesPerView: 1.2,
-        slidesPerView: 1,
+        // slidesPerView: 1,
         // spaceBetween: 10,
         
         pagination: {
-          clickable: true,
+          // clickable: true,
           
             el: '.swiper-pagination',
             type: 'fraction',

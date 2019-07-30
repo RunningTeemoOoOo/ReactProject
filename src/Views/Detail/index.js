@@ -3,7 +3,8 @@ import axios from 'axios'
 import ccss from './index.module.scss'
 import DetailSwiper from './DetailSwiper/DetailSwiper';
 import DetailSwiper2 from './DetailSwiper2/DetailSwiper2';
-import {Icon} from 'antd'
+import DetailSwiper3 from './DetailSwiper3/DetailSwiper3';
+import { withRouter } from 'react-router';
 class Detail extends Component {
 
       state = {
@@ -12,12 +13,14 @@ class Detail extends Component {
         housetag:[],
         webapp:[],
         headpic:[],
-        
+        morehouse:[]
       }
       componentDidMount(){
          var headpiclist = [];
          var headpiclist1 = [];
-          axios.get(`https://m.uhouzz.com/index.php/wechatapp/SaleHouseDetail/getSaleHouseData?hid=742467&src=webapp`).then(res=>{
+          // axios.get(`https://m.uhouzz.com/index.php/wechatapp/SaleHouseDetail/getSaleHouseData?hid=${this.props.match.params.id}}&src=webapp`)
+          axios.get(`https://m.uhouzz.com/index.php/wechatapp/SaleHouseDetail/getSaleHouseData?hid=742467&src=webapp`)
+          .then(res=>{
 
           for(var i=0;i<res.data.data.pc_house_detail.data.headimglist.length;i++){
             headpiclist.push(res.data.data.pc_house_detail.data.headimglist[i])
@@ -30,7 +33,8 @@ class Detail extends Component {
             housetag: res.data.data.pc_house_detail.data.housetag,
             webapp:res.data.data.webapp_news_list,
             // headpic: res.data.data.pc_house_detail.data.headimglist.list,
-            headpic:headpiclist1
+            headpic:headpiclist1,
+            morehouse:res.data.data.pc_similar_houses_list,
 
           })
         })
@@ -39,13 +43,9 @@ class Detail extends Component {
       render() {
         return (
           <div>
-              {<div className={ccss.head}>
-                <span onClick={()=> this.props.history.goBack()}><Icon type='left' style={{
-                  position: "absolute",
-                  top: '0.05rem',
-                  left: '0.1rem'
-                }} /></span>
-                房源详情</div>}
+              {<div className={ccss.head}><span onClick={()=>{
+               this.props.history.push('/index')
+              }} style={{position:'absolute', top: '0', left: '0.2rem'}}>&lt;</span>房源详情</div>}
               {this.state.headpic.length === 0 ? null :
                 <DetailSwiper list={this.state.headpic}></DetailSwiper>
               }
@@ -95,7 +95,7 @@ class Detail extends Component {
               </div>
 
               <div className={ccss.messages}>
-              <h2 className={ccss.h2}>项目信息</h2>
+              <h2 className={ccss.h22}>项目信息</h2>
               <div className={ccss.thing}><span>交房时间：</span>{this.state.abouthouse.data.avaiabletime}</div> 
               <div className={ccss.thing}><span>开发商：</span>{this.state.abouthouse.data.developer_name}</div>
               <div className={ccss.thing}><span>房源地址：</span>{this.state.abouthouse.data.address}</div>
@@ -103,7 +103,7 @@ class Detail extends Component {
               <div className={ccss.call}><p>一键咨询更多打折优惠…</p></div>
               </div>
 
-              <h2 className={ccss.h2}>详情介绍</h2>
+              <h2 className={ccss.h22}>详情介绍</h2>
               <div className={ccss.moremore} dangerouslySetInnerHTML={{ __html:this.state.abouthouse.data.morelink}}></div>
               
 
@@ -113,7 +113,7 @@ class Detail extends Component {
               }
 
               <div className={ccss.mapp}>
-              <h2 className={ccss.h2}>周边地图</h2>
+              <h2 className={ccss.h22}>周边地图</h2>
               <img className={ccss.map} src={`https://maps.google.cn/maps/api/staticmap?markers=${this.state.abouthouse.data.posx},${this.state.abouthouse.data.posy}&zoom=13&size=375x200&scale=2&format=png&key=AIzaSyB4ggOBQ9UfDbEhcKy8aBAv46YBu03tjUA&language=zh-CN`} alt={"map"}/>
               <div>
               <p>{this.state.abouthouse.data.address}</p>
@@ -221,7 +221,14 @@ class Detail extends Component {
                 </div>
                 </div>
                 :null
+               
               }
+               {
+                this.state.morehouse.length === 0 ? null :
+                <DetailSwiper3 list={this.state.morehouse}></DetailSwiper3>
+              }
+
+              
               <div style={{height:'.5rem'}}></div>
               <div className={ccss.footer}>
               <div>在线咨询</div>
@@ -233,4 +240,4 @@ class Detail extends Component {
       }
     }
 
-    export default Detail
+    export default withRouter(Detail)

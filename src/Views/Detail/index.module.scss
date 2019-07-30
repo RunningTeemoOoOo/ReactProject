@@ -1,3 +1,6 @@
+// body{
+//     background: #f7f7f7;
+// }
 .head{
     text-align: center;
     height: .5rem;
@@ -251,7 +254,7 @@ p{
     margin:.06rem 0;
 }
 
-h2{ padding-left: .2rem;
+.h22{ padding-left: .2rem;
     padding-right: .2rem;
     background: #fff;
     
@@ -344,7 +347,7 @@ h2{ padding-left: .2rem;
 }
 .footer{
     width: 100%;
-
+    z-index:    10;
     height: .5rem;
     display: flex;
     line-height: .5rem;
@@ -364,6 +367,7 @@ h2{ padding-left: .2rem;
         width:50%;
         text-align: center;
         background: #fff;
+        
 
     }
 }
