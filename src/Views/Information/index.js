@@ -71,7 +71,7 @@ class Information extends Component{
             </p>
           </div>
 
-          <div className={css.meiqia}>
+          <div className={css.meiqia} onClick={()=> this.props.history.push('/talk')}>
             <div className={css.mq}>
               <img src={"/img/kf.png"} alt=''/>
               <p className={css.text}>

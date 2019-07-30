@@ -18,8 +18,8 @@ class Detail extends Component {
       componentDidMount(){
          var headpiclist = [];
          var headpiclist1 = [];
-          // axios.get(`https://m.uhouzz.com/index.php/wechatapp/SaleHouseDetail/getSaleHouseData?hid=${this.props.match.params.id}}&src=webapp`)
-          axios.get(`https://m.uhouzz.com/index.php/wechatapp/SaleHouseDetail/getSaleHouseData?hid=742467&src=webapp`)
+          axios.get(`https://m.uhouzz.com/index.php/wechatapp/SaleHouseDetail/getSaleHouseData?hid=${this.props.match.params.id}}&src=webapp`)
+          // axios.get(`https://m.uhouzz.com/index.php/wechatapp/SaleHouseDetail/getSaleHouseData?hid=742467&src=webapp`)
           .then(res=>{
 
           for(var i=0;i<res.data.data.pc_house_detail.data.headimglist.length;i++){
@@ -39,10 +39,37 @@ class Detail extends Component {
           })
         })
       }
+      componentWillReceiveProps(newProps) {
+        var headpiclist = [];
+        var headpiclist1 = [];
+         axios.get(`https://m.uhouzz.com/index.php/wechatapp/SaleHouseDetail/getSaleHouseData?hid=${newProps.match.params.id}}&src=webapp`)
+         // axios.get(`https://m.uhouzz.com/index.php/wechatapp/SaleHouseDetail/getSaleHouseData?hid=742467&src=webapp`)
+         .then(res=>{
+
+         for(var i=0;i<res.data.data.pc_house_detail.data.headimglist.length;i++){
+           headpiclist.push(res.data.data.pc_house_detail.data.headimglist[i])
+            for(var j=0;j<headpiclist[i].list.length;j++){
+             headpiclist1.push(headpiclist[i].list[j])
+            }
+         }
+         this.setState({
+           abouthouse: res.data.data.pc_house_detail,
+           housetag: res.data.data.pc_house_detail.data.housetag,
+           webapp:res.data.data.webapp_news_list,
+           // headpic: res.data.data.pc_house_detail.data.headimglist.list,
+           headpic:headpiclist1,
+           morehouse:res.data.data.pc_similar_houses_list,
+
+         })
+         setTimeout(()=> {
+          window.scrollTo(0, 0)
+         }, 500)
+       })
+      }
 
       render() {
         return (
-          <div>
+          <div kay={this.props.match.params.id}>
               {<div className={ccss.head}><span onClick={()=>{
                this.props.history.push('/index')
               }} style={{position:'absolute', top: '0', left: '0.2rem'}}>&lt;</span>房源详情</div>}

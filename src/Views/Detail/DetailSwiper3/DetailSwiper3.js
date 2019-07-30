@@ -18,7 +18,7 @@ class Houses extends Component {
               !this.props.list?null:
               this.props.list.map((item, index)=> {
                 return (
-                  <div className={css.slide + " swiper-slide"} key={index}>
+                  <div className={css.slide + " swiper-slide"} key={index} onClick={()=> this.props.history.push(`/detail/${item.id}`)}>
                     <img src={item.thumburl} alt="" />
                     <p className={css.housetitl}>
                       <span className={css.spanA}>{item.city_name}</span>
